@@ -35,8 +35,9 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
       - Expo: typically quicker to learn, has own set of basic libraries for a standard project: Push Notifications, Asset Managers, etc 
       - React Native: can add native modules/code libraries  
 - **Backend**: Dart (if flutter is chosen) and JavaScript (if ReactNative is chosen)
+  - [Affirmations API](https://www.jsonapi.co/public-api/Affirmations) - returns JSON
   - Firebase or MongoDB for database --> [comparison](https://echoinnovateit.com/mongodb-vs-firebase/] (leaning towards Firebase)  
-    - F
+    - [Firebase Auth](https://firebase.google.com/docs/auth)
 
 # Software to Install
 
@@ -44,22 +45,6 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
 - [Flutter](https://docs.flutter.dev/get-started/install) or [React_Native](https://reactnative.dev/docs/environment-setup)
 - [Firebase](https://firebase.google.com/docs/cli) or [MongoDB](https://docs.mongodb.com/manual/installation/)
 - [Git](https://git-scm.com/downloads)
-
-# Calendar Options
-- Flutter Options
-  - [Getting started with Flutter Event Calendar](https://help.syncfusion.com/flutter/calendar/getting-started)
-  - [Table Calendar API](https://pub.dev/packages/table_calendar)
-  - [Comparison Of Libraries](https://medium.com/flutter-community/flutter-calendar-library-comparison-c08d5ba3cc9e)
-  - [Whole Collection of Options](https://flutterawesome.com/tag/calendar/)
-- React Native Calendar Libraries 
-  - [5 different options](https://blog.expo.dev/5-easy-to-use-react-native-calendar-libraries-e830a97d5bf7)
-  - [Expo Calendar](https://docs.expo.dev/versions/v41.0.0/sdk/calendar/)
-  - [React Native Calendar](https://react-native-components.gitbook.io/calendar/)
-
-# User Authentication 
-- [Google Sign-In & Firebase Authentication Using Flutter](https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/) 
-- [Super Simple Authentication Flow with Flutter & Firebase](https://codewithandrea.com/articles/simple-authentication-flow-with-flutter/)
-
 
 # Tutorials
 
@@ -75,11 +60,10 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
 # Resources
 
 - [How to be successful in ACM Projects](https://docs.google.com/document/d/18Zi3DrKG5e6g5Bojr8iqxIu6VIGl86YBSFlsnJnlM88/edit?usp=sharing)
-- [Choosing between React Native and Flutter](https://hackr.io/blog/react-native-vs-flutter)
 - [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-- [Getting started with React](https://facebook.github.io/react-native/docs/getting-started)
-- [Getting started with Flutter](https://flutter.dev/docs/get-started/install)
-- [Overview of making API calls](https://snipcart.com/blog/apis-integration-usage-benefits)
+- [Choosing between React Native and Flutter](https://hackr.io/blog/react-native-vs-flutter)
+- [Making API calls using React Native](https://medium.com/enappd/how-to-make-api-calls-in-react-native-apps-eab083186611)
+- [Making API calls using Flutter](https://medium.com/solidmvp-africa/making-your-api-calls-in-flutter-the-right-way-f0a03e35b4b1)
 
 
 
@@ -101,6 +85,17 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
 
 
 
+# Calendar Options
+- Flutter Options
+  - [Getting started with Flutter Event Calendar](https://help.syncfusion.com/flutter/calendar/getting-started)
+  - [Table Calendar API](https://pub.dev/packages/table_calendar)
+  - [Comparison Of Libraries](https://medium.com/flutter-community/flutter-calendar-library-comparison-c08d5ba3cc9e)
+  - [Whole Collection of Options](https://flutterawesome.com/tag/calendar/)
+- React Native Calendar Libraries 
+  - [5 different options](https://blog.expo.dev/5-easy-to-use-react-native-calendar-libraries-e830a97d5bf7)
+  - [Expo Calendar](https://docs.expo.dev/versions/v41.0.0/sdk/calendar/)
+  - [React Native Calendar](https://react-native-components.gitbook.io/calendar/)
+  
 For icons:
 
 - https://material.io/resources/icons/?style=baseline
