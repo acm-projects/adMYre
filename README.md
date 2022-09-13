@@ -16,8 +16,6 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
 2. Chat to connect with other people
 
 
-**IN PROGRSS**
-
 # Tech Stack
 
 - **Wireframes**: [Figma](https://www.figma.com/) (free trial)
@@ -53,7 +51,7 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
 - [Official Firebase/React Native tutorial](https://firebase.googleblog.com/2016/01/the-beginners-guide-to-react-native-and_84.html) : blog / how to article
 - [FreeCodeCamp Firebase Article](https://www.freecodecamp.org/news/react-native-firebase-tutorial/)
 - [Set-up/Installation of Flutter Documentation](https://docs.flutter.dev/get-started/editor)
-- [Set-up/Installation of Flutter Tutorial](https://medium.com/codechai/flutter-installation-setup-with-android-studio-326dea65f609)\
+- [Set-up/Installation of Flutter Tutorial](https://medium.com/codechai/flutter-installation-setup-with-android-studio-326dea65f609)
 - [CHAT APP](https://www.freecodecamp.org/news/build-a-chat-app-ui-with-flutter/)
 - [Another Chat App](https://medium.com/flutter-community/building-a-chat-app-with-flutter-and-firebase-from-scratch-9eaa7f41782e)
 
@@ -66,26 +64,7 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
 - [Making API calls using Flutter](https://medium.com/solidmvp-africa/making-your-api-calls-in-flutter-the-right-way-f0a03e35b4b1)
 
 
-
-# Estimated Timeline
-
-| Week         | Task(s)                                       | Deliverables                                                                   |
-| ------------ | --------------------------------------------- | ------------------------------------------------------------------------------ |
-| 1            | On boarding tasks                             | Meet the team, set meeting dates, schedule design day.                         |
-| 2            | Research tech stack and create wireframes     | Practice apps with chosen tech stack + wireframes                              |
-| 3            | Code app screens (login, home/calendar, create reminder, nudge for pickup, trade-day page) | 50% or more progress on all pages. Finished home/calendar screen (can see across weeks, days, etc).|
-| 4            | Finish up coding app screens. Code create reminders functionality. Research UserAuth and attempt to create accounts | Completed the look of all screens. Users can create reminders. Made progress in creating accounts|
-| 5            | Finish up UserAuth, creating reminders and recieving notification, start trade day functionality and nudge for pickup creation/notifications.        | Users can log in from home screen, create reminders and recieve notifications |
-| 6            | Keep working on all functionalities  | all MVP should be 70% done                                                                   |
-| 7            | Keep working on all functionalities  | all MVP should be 90% done                                                                          |
-| 8            | Integration of front and back end                   | functioning MVP       |
-| 9            | Create Presentation and polish MVP                        | Hammer out the order of presenters, plan/gimmick, and complete slideshow/video  |
-| 10            | Practice Presentations                         | N/A                                                                            |
-| Presentation | You're almost donee!        | Can finally put ACM Projects on your resume ;P jk jk be proud of the app you created :D                           |
-
-
-
-# Calendar Options
+# Misc Calendar Options
 - Flutter Options
   - [Getting started with Flutter Event Calendar](https://help.syncfusion.com/flutter/calendar/getting-started)
   - [Table Calendar API](https://pub.dev/packages/table_calendar)
