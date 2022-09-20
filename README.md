@@ -75,6 +75,24 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
   - [Expo Calendar](https://docs.expo.dev/versions/v41.0.0/sdk/calendar/)
   - [React Native Calendar](https://react-native-components.gitbook.io/calendar/)
   
+
+
+# Estimated Timeline
+
+| Week         | Task(s)                                       | Deliverables                                                                   |
+| ------------ | --------------------------------------------- | ------------------------------------------------------------------------------ |
+| 1            | On boarding tasks                             | Meet the team, set meeting dates, schedule design day.                         |
+| 2            | Research tech stack and create wireframes     | Practice apps with chosen tech stack + wireframes                              |
+| 3            | Code app screens | 50% or more progress on all pages. Finished home/calendar screen (can see across weeks, days, etc).|
+| 4            | Finish up coding app screens. Code create reminders functionality. Research UserAuth and able to create accounts | Completed the look of all screens. Users can create reminders/notifs. Made progress in creating accounts|
+| 5            | Finish up reating reminders and recieving notification, start working on using Affirmations API.        | Users can log in from home screen, create reminders and recieve notifications |
+| 6            | Keep working on all functionalities  | all MVP should be 70% done                                                                   |
+| 7            | Keep working on all functionalities  | all MVP should be 90% done                                                                          |
+| 8            | Integration of front and back end                   | functioning MVP       |
+| 9            | Create Presentation and polish MVP                        | Hammer out the order of presenters, plan/gimmick, and complete slideshow/video  |
+| 10            | Practice Presentations                         | N/A                                                                            |
+| Presentation | You're almost donee!        | Can finally put ACM Projects on your resume ;P jk jk be proud of the app you created :D                           |
+
 For icons:
 
 - https://material.io/resources/icons/?style=baseline
