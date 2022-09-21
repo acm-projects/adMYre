@@ -52,8 +52,6 @@ Always feel like you are constantly doubting yourself and your abilities? Never 
 - [FreeCodeCamp Firebase Article](https://www.freecodecamp.org/news/react-native-firebase-tutorial/)
 - [Set-up/Installation of Flutter Documentation](https://docs.flutter.dev/get-started/editor)
 - [Set-up/Installation of Flutter Tutorial](https://medium.com/codechai/flutter-installation-setup-with-android-studio-326dea65f609)
-- [CHAT APP](https://www.freecodecamp.org/news/build-a-chat-app-ui-with-flutter/)
-- [Another Chat App](https://medium.com/flutter-community/building-a-chat-app-with-flutter-and-firebase-from-scratch-9eaa7f41782e)
 
 # Resources
 
