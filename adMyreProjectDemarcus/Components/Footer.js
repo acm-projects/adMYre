@@ -1,24 +1,27 @@
 import React, { useEffect } from 'react';
 import WebFont from 'webfontloader';
 import {View, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const Footer = () => {
+
+
+const Footer = ({navigation}) => {
+
+   
+
     return (
-           <View>
-           <TouchableOpacity style={styles.button}>
+           <View >
+           <TouchableOpacity  style={styles.button} >
            <Text style={styles.buttonText}>
           log in
            </Text>
            </TouchableOpacity>
            <View
-  style={{
-    borderBottomColor: 'black',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderWidth: 1,
-  }}
+
 />
-           <TouchableOpacity style={styles.button2}>
+           <TouchableOpacity  style={styles.button2}>
            <Text style={styles.buttonText}>
           sign up
            </Text>

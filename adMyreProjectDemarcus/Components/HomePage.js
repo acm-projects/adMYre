@@ -6,7 +6,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 const HomePage = () => {
     return (
         <View>
-        <Text style = {styles.text}> ad
+        <Text style = {styles.text}> ads
         <Text style = {styles.middleText}>MY</Text>
         <Text style = {styles.text}>re</Text>
         </Text>

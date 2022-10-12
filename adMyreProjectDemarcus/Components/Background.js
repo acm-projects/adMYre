@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import WebFont from 'webfontloader';
-import {ImageBackground, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T} from 'react-native';
+import {ImageBackground, Button, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T} from 'react-native';
 import HomePage from './HomePage';
 import Footer from './Footer';
 import { PromiseProvider } from 'mongoose';
@@ -9,12 +9,15 @@ import { PromiseProvider } from 'mongoose';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const Background = () => {
+const Background = (navigation) => {
     return (
         <ImageBackground 
         source={require("../Images/StartPage.jpg")} 
         style={styles.img}
         >
+         <Button
+        title="Go to Details"
+      />
  <HomePage/>
  <Footer/>
  

@@ -10,8 +10,7 @@ import { withOrientation } from 'react-navigation';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-
-const LoginPage = ({navigation}) => {
+const SignUp = ({navigation}) => {
     
 const [text, setText] = useState('');
 const [text2, setText2] = useState('');
@@ -20,8 +19,8 @@ const [text2, setText2] = useState('');
          source={require("../Images/StartPage.jpg")}
          style={styles.img} >
     <View>
-    <Text style = {styles.text}> log
-    <Text style = {styles.middleText}> in </Text>
+    <Text style = {styles.text}> sign
+    <Text style = {styles.middleText}> up </Text>
     </Text>
     <TextInput
         style={styles.inputText}
@@ -35,9 +34,9 @@ const [text2, setText2] = useState('');
         onChangeText={newText2 => setText2(newText2)}
         defaultValue={text2}
     />
-    <TouchableOpacity onPress={() => navigation.navigate('LoggedIn')}  style={styles.button}>
+    <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.button}>
     <Text style={styles.buttonText}>
-        log in
+        sign up
          </Text>   
     </TouchableOpacity>
     </View>
@@ -108,4 +107,4 @@ const styles = StyleSheet.create({
       },
     });
 
-export default LoginPage;
+export default SignUp;
