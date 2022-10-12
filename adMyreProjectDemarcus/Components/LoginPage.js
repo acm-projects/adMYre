@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import WebFont from 'webfontloader';
 import {ImageBackground, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T, TextInput, TouchableOpacity} from 'react-native';
-import HomePage from './HomePage';
+import HomePage from './Homepage';
 import Footer from './Footer';
 import { PromiseProvider } from 'mongoose';
 import { withOrientation } from 'react-navigation';
@@ -35,7 +35,7 @@ const [text2, setText2] = useState('');
         onChangeText={newText2 => setText2(newText2)}
         defaultValue={text2}
     />
-    <TouchableOpacity onPress={() => navigation.navigate('LoggedIn')}  style={styles.button}>
+    <TouchableOpacity onPress={() => navigation.navigate('Home')}  style={styles.button}>
     <Text style={styles.buttonText}>
         log in
          </Text>   

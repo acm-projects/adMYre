@@ -3,6 +3,7 @@ import {createAppContainer} from 'react-navigation';
 import Login from '../Components/LoginPage'
 import SignUp from '../Components/SignUp'
 import LoggedIn from '../Components/LoggedInPage'
+import MainContainer from '../Components/MainContainer'
 const screens = {
     Login: {
         screen: Login
@@ -12,9 +13,11 @@ const screens = {
         screen: SignUp
     },
 
-    LoggedIn: {
-        screen: LoggedIn
+    MainContainer: {
+        screen: MainContainer
     },
+
+
 
 }
 

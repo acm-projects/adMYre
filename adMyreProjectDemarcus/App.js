@@ -5,8 +5,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Background from './Components/Background'
 import Login from './Components/LoginPage'
 import Sign from './Components/SignUp'
-import HomePage from './Components/HomePage'
+import HomePage from './Components/Homepage'
 import LoggedInPage from './Components/LoggedInPage'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Calendar from './Components/Calender';
+import Profile from './Components/Profile';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+//screen names
+const homeName = 'HomePage';
+const calenderName = 'Calender';
+const profileName = 'Profile';
+
+
+const Tab = createBottomTabNavigator();
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -18,6 +30,36 @@ function LogoTitle() {
       style={ {width: 460, height: 65} }
       source={require("./Images/StartPage.jpg")}
     />
+  );
+}
+
+function Home({navigation})
+{
+  return (
+      <Tab.Navigator 
+        initialRouteName ={homeName} 
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+            let rn = route.name;
+
+            if(rn===homeName){
+              iconName = focused ? 'home' : 'home-outline'
+            } else if (rn === calenderName) {
+              iconName = focused ? 'list' : 'list-outline'
+            } else if(rn === profileName){
+              iconName = focused ? 'happy' : 'happy-outline'
+            }
+
+            return <Ionicons name ={iconName} size={size} color={color}/>
+          },
+        })}>
+
+        <Tab.Screen name ={homeName} component ={HomePage}/>
+            <Tab.Screen name ={calenderName} component ={Calendar}/>
+                <Tab.Screen name ={profileName} component ={Profile}/>
+
+        </Tab.Navigator>
   );
 }
 
@@ -102,7 +144,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator >
+      <Stack.Navigator  >
         <Stack.Screen
          name="loginSignUp"
           component={LoginSignUp} 
@@ -114,8 +156,9 @@ function App() {
           />
         <Stack.Screen name="Login" component = {Login}/>
         <Stack.Screen name="Sign" component = {Sign}/>
-        <Stack.Screen name="LoggedIn" component = {LoggedInPage}/>
+        <Stack.Screen name="Home" component = {Home}/>
       </Stack.Navigator>
+    
     </NavigationContainer>
   );
 }
