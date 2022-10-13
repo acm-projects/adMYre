@@ -37,25 +37,9 @@ function Home({navigation})
 {
   return (
       <Tab.Navigator 
-        initialRouteName ={homeName} 
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-            let iconName;
-            let rn = route.name;
+        initialRouteName ={homeName}>
 
-            if(rn===homeName){
-              iconName = focused ? 'home' : 'home-outline'
-            } else if (rn === calenderName) {
-              iconName = focused ? 'list' : 'list-outline'
-            } else if(rn === profileName){
-              iconName = focused ? 'happy' : 'happy-outline'
-            }
-
-            return <Ionicons name ={iconName} size={size} color={color}/>
-          },
-        })}>
-
-        <Tab.Screen name ={homeName} component ={HomePage}/>
+        <Tab.Screen name ={homeName} component ={HomePage} options={{tabBarLabel:'Home', tabBarIcon: ({ color, size }) => (<Ionicons name="home" color={color} size={size}/>)}}/>
             <Tab.Screen name ={calenderName} component ={Calendar}/>
                 <Tab.Screen name ={profileName} component ={Profile}/>
 

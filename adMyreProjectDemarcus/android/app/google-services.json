@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "959199045145",
+    "project_id": "admyreapp-a2e28",
+    "storage_bucket": "admyreapp-a2e28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959199045145:android:7cff4f15b540c38d9eec88",
+        "android_client_info": {
+          "package_name": "com.admyreprojectdemarcus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959199045145-4l5452ul63ml6onl5sr6di2kuaguovsh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV2_Ev3TjJ-bSj8Z2KN8egAW_2bGVeNmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959199045145-4l5452ul63ml6onl5sr6di2kuaguovsh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
