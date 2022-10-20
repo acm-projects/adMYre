@@ -14,6 +14,7 @@ const SignUp = ({navigation}) => {
     
 const [text, setText] = useState('');
 const [text2, setText2] = useState('');
+const [text3, setText3] = useState('');
     return (
         <ImageBackground
          source={require("../Images/StartPage.jpg")}
@@ -24,7 +25,13 @@ const [text2, setText2] = useState('');
     </Text>
     <TextInput
         style={styles.inputText}
-        placeholder="Username/input"
+        placeholder="Full Name"
+        onChangeText={newText => setText3(newText)}
+        defaultValue={text3}
+    />
+    <TextInput
+        style={styles.inputText}
+        placeholder="Username/Email"
         onChangeText={newText => setText(newText)}
         defaultValue={text}
     />
@@ -95,7 +102,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontFamily: 'JacquesFrancois-Regular',
         paddingBottom: 120,
-        marginTop: 80,  
+        marginTop: 50,  
        
       },
 
