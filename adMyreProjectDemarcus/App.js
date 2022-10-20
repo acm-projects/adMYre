@@ -6,6 +6,7 @@ import Background from './Components/Background'
 import Login from './Components/LoginPage'
 import Sign from './Components/SignUp'
 import HomePage from './Components/Homepage'
+import StartPage from './Components/StartPage'
 import LoggedInPage from './Components/LoggedInPage'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Calendar from './Components/Calender';
@@ -27,7 +28,7 @@ const screenWidth = Dimensions.get('window').width;
 function LogoTitle() {
   return (
     <Image
-      style={ {width: 460, height: 65} }
+      style={ {width: 650, height: 65} }
       source={require("./Images/StartPage.jpg")}
     />
   );
@@ -37,11 +38,20 @@ function Home({navigation})
 {
   return (
       <Tab.Navigator 
-        initialRouteName ={homeName}>
+        initialRouteName ={homeName}
+        options={{
+             headerTitle: (props) => <LogoTitle {...props} />,
+             headerShadowVisible: false,
+              }}
+        >
 
-        <Tab.Screen name ={homeName} component ={HomePage} options={{tabBarLabel:'Home', tabBarIcon: ({ color, size }) => (<Ionicons name="home" color={color} size={size}/>)}}/>
-            <Tab.Screen name ={calenderName} component ={Calendar}/>
-                <Tab.Screen name ={profileName} component ={Profile}/>
+        <Tab.Screen name ={homeName} 
+        component ={HomePage} 
+        options={{tabBarLabel:'Home', headerShown: false,  headerTitle: (props) => <LogoTitle {...props} />, headerShadowVisible: false,  tabBarIcon: ({ color, size }) => (<Ionicons name="home" color={color} size={size} />)}}/>
+            <Tab.Screen name ={calenderName}
+             component ={Calendar}
+             options={{tabBarLabel:'Calendar', headerShown: false, headerTitle: (props) => <LogoTitle {...props} />,  headerShadowVisible: false,  tabBarIcon: ({ color, size }) => (<Ionicons name="list" color={color} size={size} />)}}/>
+                <Tab.Screen name ={profileName} component ={Profile} options={{tabBarLabel:'Profile', headerShown: false, tabBarIcon: ({ color, size }) => (<Ionicons name="happy" color={color} size={size}/>)}}/>
 
         </Tab.Navigator>
   );
@@ -52,7 +62,7 @@ const LoginSignUp = ({navigation}) => {
     <ImageBackground
     source={require("./Images/StartPage.jpg")} 
         style={styles.img}>
-         <HomePage/>
+         <StartPage/>
          <View >
          <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.button} >
          <Text style={styles.buttonText}>
@@ -140,7 +150,9 @@ function App() {
           />
         <Stack.Screen name="Login" component = {Login}/>
         <Stack.Screen name="Sign" component = {Sign}/>
-        <Stack.Screen name="Home" component = {Home}/>
+        <Stack.Screen name="Home" component = {Home} options = {{
+          headerShown: false,
+        }}/>
       </Stack.Navigator>
     
     </NavigationContainer>
