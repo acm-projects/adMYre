@@ -8,7 +8,7 @@ import Footer from './Footer';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const Profile = () => {
+const Profile = ({navigation}) => {
   const [name, setName] = useState("Demarcus B");
   const [achievement, setAchievement] = useState("");
   return (
@@ -23,7 +23,7 @@ const Profile = () => {
     <Text style={styles.name}> Demarcus
     <Text style={{color: '#FD8686'}}> Braclet </Text>
 
-        <Text style = {styles.addToAchievement}> + </Text>
+    <Text onPress={() => navigation.navigate('addAchievement')} style = {styles.addToAchievement} > + </Text>
     
      </Text>
      </View>  
@@ -72,7 +72,7 @@ const Profile = () => {
 const styles = StyleSheet.create({
   addAchievement: {
     fontSize: 30,
-    color: "white",
+    color: "black",
     fontFamily: 'JacquesFrancois-Regular',
    
   },
@@ -144,6 +144,7 @@ nameHeader: {
       borderWidth: 1,
       padding: 10,
       flex: 1,
+      backgroundColor: "white",
 
     },
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import WebFont from 'webfontloader';
+
 import {
   ImageBackground,
   View,
@@ -10,6 +11,7 @@ import {
   T,
   TextInput,
   Button,
+  TouchableOpacity,
 } from 'react-native';
 
 
@@ -25,7 +27,12 @@ const AddAchievement = () => {
       <ImageBackground
         source={require('../Images/StartPage.jpg')}
         style={styles.img}>
-        <Text style={styles.heading}> Add Achievement </Text>
+        <Text style={styles.heading}>Add 
+        <Text> </Text>
+        <Text style={styles.heading2}>
+           Achievement
+         </Text> 
+         </Text>
         <Text style={styles.subContent}> Title of your achievement </Text>
         <TextInput
           style={{ height: 90, backgroundColor: 'white', width: screenWidth }}
@@ -44,41 +51,68 @@ const AddAchievement = () => {
 
         <Text style={styles.subContent}> When was your achievement? </Text>
         <TextInput
-          style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, margin: 10, }}
+          style={{ height: 90, backgroundColor: 'white', width: screenWidth, marginBottom: 50 }}
           placeholder=""
           onChangeText={(newText) => setText3(newText)}
           defaultValue={text3}
         />
 
-        <Button
-          onPress={this._onpressButton}
-          title="Add Achievement to profile"
-          color="#FD8686"
-        />
+
+
+<TouchableOpacity style={styles.button}>
+    <Text style={styles.buttonText}>Add Items</Text>
+</TouchableOpacity>
+       
       </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+
+  button: {
+    marginLeft: 70,
+    textAlign: 'center',
+    alignContent: 'center',
+    backgroundColor: "#FD8686",
+    width: 250,
+    borderRadius: 35,
+    borderWidth: 1,
+  },
+
+  buttonText: {
+    textAlign: 'center',
+    alignContent: 'center',
+    height: 50,
+    color: 'white',
+    fontSize: 30,
+    fontFamily: "JacquesFrancois-Regular",
+
+},
+
   img: {
     height: screenHeight,
     width: screenWidth,
-    justifyContent: 'top',
-    alignItems: 'top',
+    textAlign: 'center',
   },
 
   heading: {
     fontSize: 30,
     fontFamily: 'JacquesFrancois-Regular',
-    marginTop: 50,
-    alignContent: 'left',
+    marginTop: 30,
     color: 'white',
   },
 
+  
+  heading2: {
+    fontSize: 30,
+    fontFamily: 'JacquesFrancois-Regular',
+    marginTop: 50,
+    color: '#FD8686',
+  },
+
   subContent: {
-    alignContent: 'left',
-    marginTop: 70,
+    marginTop: 50,
     fontFamily: 'JacquesFrancois-Regular',
     fontSize: 20,
   },

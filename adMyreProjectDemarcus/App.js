@@ -12,6 +12,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Calendar from './Components/Calender';
 import Profile from './Components/Profile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import addAchievement from './Components/addAchievement';
 
 //screen names
 const homeName = 'HomePage';
@@ -150,6 +151,7 @@ function App() {
           />
         <Stack.Screen name="Login" component = {Login}/>
         <Stack.Screen name="Sign" component = {Sign}/>
+        <Stack.Screen name="addAchievement" component = {addAchievement}/>
         <Stack.Screen name="Home" component = {Home} options = {{
           headerShown: false,
         }}/>
