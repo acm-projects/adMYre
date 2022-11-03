@@ -3,165 +3,168 @@ import WebFont from 'webfontloader';
 import {ImageBackground, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T, Button, ScrollView, TextInput,TouchableOpacity} from 'react-native';
 import HomePage from './Homepage';
 import Footer from './Footer';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const Profile = ({navigation}) => {
-  const [name, setName] = useState("Demarcus B");
-  const [achievement, setAchievement] = useState("");
+  const [text,setText] = useState("\"You are amazing!\"");
   return (
-
-      <ImageBackground 
-      source={require("../Images/StartPage.jpg")} 
-      style={styles.img} >
-       
-       
- 
-  <View>
-    <Text style={styles.name}> Demarcus
-    <Text style={{color: '#FD8686'}}> Braclet </Text>
-
-    <Text onPress={() => navigation.navigate('addAchievement')} style = {styles.addToAchievement} > + </Text>
-    
-     </Text>
-     </View>  
-    
-     <View
-  style={{
-    borderBottomColor: 'black',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    marginBottom: 10,
-  }}
-/>
-
-    <Text style={styles.text}> Look at all you have accomplished!</Text> 
-    <View style={styles.rectangle}>
-  <ScrollView style={{flex: 1, padding: 5}}>
-  <Text style={styles.addAchievementHeader}> December 12, 2022 </Text>
-  <Text style={styles.addAchievement}>* Ate lunch </Text>
-  <Text style={styles.addAchievement}>* UHHHHHHHHHHHHHHHHHHHHH </Text>
-
-  
-  <Text style={styles.addAchievementHeader}> December 13, 2022 </Text>
-  <Text style={styles.addAchievement}>* WOOKE UP </Text>
-  <Text style={styles.addAchievement}>* PARTAYYYY </Text>
-
-  <Text style={styles.addAchievementHeader}> December 14, 2022 </Text>
-  <Text style={styles.addAchievement}>* NO PARTY unhappy days </Text>
-  <Text style={styles.addAchievement}>*WORKOUT WITH THE BOYS IN BLYE </Text>
-  
-  <Text style={styles.addAchievementHeader}> December 15, 2022 </Text>
-  <Text style={styles.addAchievement}>* NO PARTY unhappy days </Text>
-  <Text style={styles.addAchievement}>* PARTAYYYY </Text>
-  
-
-  </ScrollView>
-  </View>
-
-
-      </ImageBackground>
-  
-  );
-};
-
-  
-
-
-const styles = StyleSheet.create({
-  addAchievement: {
-    fontSize: 30,
-    color: "black",
-    fontFamily: 'JacquesFrancois-Regular',
-   
-  },
-
-
-  addAchievementHeader: {
-    fontSize: 30,
-    color: '#FD8686',
-    fontFamily: 'JacquesFrancois-Regular',
-   
-  },
-
-  addToAchievement: {
-    marginLeft: 20,
-      fontSize: 30,
-      color: "black",
-      fontFamily: 'karla-v23-latin-regular',
-      marginLeft: 20,
-      borderRadius: 20,
-      padding: 10,
-      height: 500,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-      flex: 1,
-    
-    
-  },
-
-img: {
+    <View style = {{backgroundColor: "black",
     height: screenHeight,
     width: screenWidth,
-      flex: 1,
-      padding: 5,
-},
-heading: {
-          flex: 1,
-          fontSize: 50,
-          color: "#FFFFFF",
-          fontFamily: 'JacquesFrancois-Regular',
-          fontStyle: 'italic',
-          textDecorationLine: 'underline',
-          textAlign: 'center',
-        },
- name: {
-          fontSize: 30,
-          color: "white",
-          fontFamily: 'JacquesFrancois-Regular',
-          textAlign: 'center',
+  flex:1,
+    }}
+    >
+    
+      <View>
+      <Text style = {styles.text}> Demarcus 
+      <Text> </Text>
+      <Text style = {styles.middleText}>Braclet</Text>
+     
+      </Text>
+      
 
-        },
+      <Text style = {styles.informativeText}>All of your accomplishments are listed here.</Text>
+   
+      </View>
+      <View 
+      style={styles.img}
+      >
+     
+     <Text  onPress={() => navigation.navigate('addAchievement')} style = {styles.affirmation}> Click here to add an achievement! </Text>
+   
+      <Text style={styles.dailyaffirmation}>
+      Look at all you have accomplished!
+      
+      </Text>
+      <Text>
+      </Text>
+      <ScrollView style={{flex:1}}>
+      
+      <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> Worked out {'\n'} 
+      
+   <Text>       Got them GAINES </Text>
 
-nameHeader: {
-  flexDirection: 'row',
-  height: '100%'
-},
+       </Text>
+       
+      <Text style = {styles.recentaffirmation}> <Ionicons  color="blue" name="sad-outline" size={30}/> CS EXAM  
+      <Text> {'\n'} </Text>
+      <Text style={{borderWidth: 100,}}>      Got A 50</Text>
+      <Text> {'\n'} </Text>
+      <Text style={{borderWidth: 100,}}>      12 December 2022 </Text>
+       </Text>
+      <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> ATE BREAKFAST 
+      <Text> {'\n'} </Text>
+      <Text style={{borderWidth: 100,}}>      WITH MILK</Text>
+      </Text>
+      <Text style = {styles.recentaffirmation}> <Ionicons color="green"  name="happy-outline" size={30}/> Touched Grass! </Text>
+      <Text style = {styles.recentaffirmation}> <Ionicons color="green"  name="happy-outline" size={30}/> ATE FOOOOOOD! </Text>
+      <Text style = {styles.recentaffirmation}><Ionicons color="green"  name="happy-outline" size={30}/>  HUNG OUT WITH A FRIEND! </Text>
+      <Text style = {styles.recentaffirmation}> <Ionicons color="green"  name="happy-outline" size={30}/> Hung out with your familiy </Text>
+      <Text style = {styles.recentaffirmation}> <Ionicons color="green"  name="happy-outline" size={30}/> Finished Homework! </Text>
+      
+</ScrollView>
+</View>
+      </View>
+   
+  )
+  }
 
-     scrollView: {
-      backgroundColor:'white',
-      marginHorizontal: 20,
-     },
-
-     rectangle: {
-      marginLeft: 20,
-      borderRadius: 20,
-      padding: 10,
-      height: 500,
-      margin: 12,
+  const styles = StyleSheet.create({ 
+    affirmation: {
+      paddingTop:13,
+      fontSize: 15,
+      color: "black",
+      fontFamily: 'karla-v23-latin-regular',
       borderWidth: 1,
-      padding: 10,
-      flex: 1,
-      backgroundColor: "white",
-
-    },
-
-    text: {
-      fontSize: 30,
-      color: "white",
-      fontFamily: 'JacquesFrancois-Regular',
+      borderColor: 'white',
+      borderRadius: 15,
+      textAlign: "center",
+      backgroundColor: "cyan",
       textAlign: 'center',
-
-    },
-    input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
+      width: 300,
+      height: 50,
+      marginTop: 20,
+      marginLeft: 35,
     },
 
-});
+    informativeText: {
+      color: "#808080",
+      fontSize: 15,
+      fontFamily: 'JacquesFrancois-Regular',
+      paddingLeft: 14,
+    },
 
+    recentaffirmation: {
+      elevation: 15,
+      shadowColor: '#52006A',
+      fontSize: 25,
+      color: "black",
+      fontFamily: 'karla-v23-latin-regular',
+      borderWidth: 3,
+      flex: 1,
+      padding: 25,
+      backgroundColor: "white",
+      marginTop: 20, 
+      width: 350,
+      marginLeft: 15,
+    },
+
+    dailyaffirmation: {
+      textAlign: 'left',
+      fontFamily: 'JacquesFrancois-Regular',
+      color: "black",
+      marginTop: 30,
+      fontSize: 20,
+    },
+
+      text: {
+        fontSize: 40,
+        color: "white",
+        fontFamily: 'JacquesFrancois-Regular',
+      
+       
+
+      },
+
+
+      middleText: {
+        fontSize: 40,
+        color: "#FD8686",
+        fontFamily: 'JacquesFrancois-Regular',
+       
+
+
+      },
+
+      topContainer: {
+        textAlign: "left",
+        color: "black",
+      },
+      
+    
+
+      img: {
+        borderTopRightRadius: 30,
+        borderTopLeftRadius: 30,
+        height: screenHeight,
+        width: 380,
+        marginTop: 10,
+        backgroundColor: "#79CD91",
+        marginLeft: 8,
+        flex: 1,
+  
+    
+      
+
+       
+    },
+
+
+    
+    });
+   
 export default Profile;

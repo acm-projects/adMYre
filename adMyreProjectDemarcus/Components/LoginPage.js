@@ -25,7 +25,7 @@ const [text2, setText2] = useState('');
     </Text>
     <TextInput
         style={styles.inputText}
-        placeholder="Username/"
+        placeholder="Username/Email"
         onChangeText={newText => setText(newText)}
         defaultValue={text}
     />

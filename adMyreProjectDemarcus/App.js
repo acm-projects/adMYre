@@ -9,14 +9,14 @@ import HomePage from './Components/Homepage'
 import StartPage from './Components/StartPage'
 import LoggedInPage from './Components/LoggedInPage'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Calendar from './Components/Calender';
+import Calender from './Components/Calender';
 import Profile from './Components/Profile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import addAchievement from './Components/addAchievement';
-
+import AddAchievement from './Components/AddAchievement';
+import MoodPicker from './Components/MoodPicker';
 //screen names
 const homeName = 'HomePage';
-const calenderName = 'Calender';
+const moodName = 'MoodPicker';
 const profileName = 'Profile';
 
 
@@ -49,8 +49,8 @@ function Home({navigation})
         <Tab.Screen name ={homeName} 
         component ={HomePage} 
         options={{tabBarLabel:'Home', headerShown: false,  headerTitle: (props) => <LogoTitle {...props} />, headerShadowVisible: false,  tabBarIcon: ({ color, size }) => (<Ionicons name="home" color={color} size={size} />)}}/>
-            <Tab.Screen name ={calenderName}
-             component ={Calendar}
+            <Tab.Screen name ={moodName}
+             component ={MoodPicker}
              options={{tabBarLabel:'Calendar', headerShown: false, headerTitle: (props) => <LogoTitle {...props} />,  headerShadowVisible: false,  tabBarIcon: ({ color, size }) => (<Ionicons name="list" color={color} size={size} />)}}/>
                 <Tab.Screen name ={profileName} component ={Profile} options={{tabBarLabel:'Profile', headerShown: false, tabBarIcon: ({ color, size }) => (<Ionicons name="happy" color={color} size={size}/>)}}/>
 
@@ -151,10 +151,10 @@ function App() {
           />
         <Stack.Screen name="Login" component = {Login}/>
         <Stack.Screen name="Sign" component = {Sign}/>
-        <Stack.Screen name="addAchievement" component = {addAchievement}/>
-        <Stack.Screen name="Home" component = {Home} options = {{
-          headerShown: false,
-        }}/>
+        <Stack.Screen name="addAchievement" component = {AddAchievement}/>
+        <Stack.Screen name="Home" component = {Home} options = {{headerShown: false,}}/>
+        <Stack.Screen name = "MoodPicker" component = {MoodPicker}/>
+        <Stack.Screen name = "Calender" component = {Calender}/>
       </Stack.Navigator>
     
     </NavigationContainer>

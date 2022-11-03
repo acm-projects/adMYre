@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import WebFont from 'webfontloader';
 import {View, Text, StyleSheet, Image, ImageBackground, Dimensions, TextInput, ScrollView, Button, TouchableOpacity} from 'react-native';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import GenerateAchievement from './GenerateAffirmation';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -10,122 +11,147 @@ const screenWidth = Dimensions.get('window').width;
 const HomePage = (navigation) => {
   const [text,setText] = useState("\"You are amazing!\"");
     return (
-      <ImageBackground
-      source={require("../Images/StartPage.jpg")} 
-      style={styles.img}
+      <View style = {{backgroundColor: "black",
+      height: screenHeight,
+      width: screenWidth,
+    flex:1,
+      }}
       >
-     
-        <View style={{flexDirection: 'row'}}>
+      
+        <View>
         <Text style = {styles.text}> Ho
         <Text style = {styles.middleText}>me</Text>
+        <Text style = {styles.text}> Pa
+        <Text style = {styles.middleText}>ge</Text>
+        
         </Text>
-        </View>
+        </Text>
+        
 
+        <Text style = {styles.informativeText}>Your daily accomplishments are listed here.</Text>
+     
+        </View>
+        
+        <View 
+        style={styles.img}
+        >
        
-        <Text style = {styles.affirmation}> {text} </Text>
+       <GenerateAchievement/>
+     
         <Text style={styles.dailyaffirmation}>
-        Recently You...
+        Recently You
+        <Ionicons name="list-circle" size={20}/>
         </Text>
-        <ScrollView style={{flex: 1, padding: 10}}>
-        <Text style = {styles.recentaffirmation}> Woke up early!! </Text>
-        <Text style = {styles.recentaffirmation}> GOT A 50 IN CS</Text>
-        <Text style = {styles.recentaffirmation}> ATE BREAKFAST</Text>
-        <Text style = {styles.recentaffirmation}> Touched Grass!</Text>
-        <Text style = {styles.recentaffirmation}> ATE FOOOOOOD!</Text>
-        <Text style = {styles.recentaffirmation}> HUNG OUT WITH A FRIEND!</Text>
-        <Text style = {styles.recentaffirmation}> Hung out with your familiy</Text>
-        <Text style = {styles.recentaffirmation}> You did your homework!</Text>
+        <Text>
+        </Text>
+        <ScrollView style={{flex:1}}>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> Woke up early!! 
+         </Text>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> GOT A 50 IN CS  </Text>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/>ATE BREAKFAST </Text>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> Touched Grass!</Text>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/>ATE FOOOOOOD!</Text>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> HUNG OUT WITH A FRIEND! </Text>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> Hung out with your familiy </Text>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> LISTEND TO I LIKE YOU I DO </Text>
         
 </ScrollView>
-
-        </ImageBackground>
+</View>
+        </View>
      
     )
     }
 
     const styles = StyleSheet.create({ 
-
       affirmation: {
-        fontSize: 30,
-        color: "#636060",
-        fontFamily: 'karla-v23-latin-regular',
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 20,
-        padding: 25,
-        backgroundColor: "white",
-        textAlign: 'center',
-      },
-
-      addAffirmation: {
-        textAlign: 'center',
-        fontSize: 50,
+        paddingTop:13,
+        fontSize: 15,
         color: "black",
         fontFamily: 'karla-v23-latin-regular',
         borderWidth: 1,
         borderColor: 'white',
-        borderRadius: 1000,
-        marginTop: 10,
-        marginRight: 30,
-        marginBottom: 10,
-       marginLeft: 20,
-       paddingRight: 15,  
-       backgroundColor: 'white',
-       
-      
+        borderRadius: 15,
+        textAlign: "center",
+        backgroundColor: "cyan",
+        textAlign: 'center',
+        width: 300,
+        height: 50,
+        marginTop: 20,
+        marginLeft: 35,
+      },
+
+      informativeText: {
+        color: "#808080",
+        fontSize: 15,
+        fontFamily: 'JacquesFrancois-Regular',
+        paddingLeft: 14,
       },
 
       recentaffirmation: {
-        fontSize: 30,
-        color: "#636060",
+        elevation: 15,
+        shadowColor: '#52006A',
+        fontSize: 25,
+        color: "black",
         fontFamily: 'karla-v23-latin-regular',
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 100,
+        borderWidth: 3,
+        
         padding: 25,
         backgroundColor: "white",
         marginTop: 20, 
-        textAlign: 'center',
+       
+        width: 350,
+        marginLeft: 15,
       },
 
       dailyaffirmation: {
+        marginTop: 30,
+        textAlign: 'left',
         fontFamily: 'JacquesFrancois-Regular',
         color: "black",
-        textAlign: 'left',
-        marginTop: 20,
-        fontSize: 30,
+      
+        fontSize: 20,
       },
 
         text: {
-          fontSize: 70,
+          fontSize: 40,
           color: "white",
           fontFamily: 'JacquesFrancois-Regular',
-          textAlign: 'center',
-          marginLeft: 70,
+        
+         
 
         },
 
-        scrollView: {
-          backgroundColor: 'pink',
-          marginHorizontal: 20,
-        },
 
         middleText: {
-          fontSize: 70,
+          fontSize: 40,
           color: "#FD8686",
           fontFamily: 'JacquesFrancois-Regular',
-          textAlign: 'center',
+         
 
 
+        },
+
+        topContainer: {
+          textAlign: "left",
+          color: "black",
         },
         
       
 
         img: {
+          borderTopRightRadius: 30,
+          borderTopLeftRadius: 30,
           height: screenHeight,
-          width: screenWidth,
+          width: 380,
+          marginTop: 10,
+          backgroundColor: "#79CD91",
+          marginLeft: 8,
           flex: 1,
-         padding: 5,
+    
+      
+        
+
+         
       },
 
 
