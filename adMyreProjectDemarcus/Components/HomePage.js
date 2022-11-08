@@ -9,6 +9,7 @@ const screenWidth = Dimensions.get('window').width;
 
 
 const HomePage = (navigation) => {
+  
   const [text,setText] = useState("\"You are amazing!\"");
     return (
       <View style = {{backgroundColor: "black",

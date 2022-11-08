@@ -5,14 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Background from './Components/Background'
 import Login from './Components/LoginPage'
 import Sign from './Components/SignUp'
-import HomePage from './Components/Homepage'
+import HomePage from './Components/HomePage'
 import StartPage from './Components/StartPage'
 import LoggedInPage from './Components/LoggedInPage'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Calender from './Components/Calender';
 import Profile from './Components/Profile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import AddAchievement from './Components/AddAchievement';
+import AddAchievement from './Components/addAchievement';
 import MoodPicker from './Components/MoodPicker';
 //screen names
 const homeName = 'HomePage';

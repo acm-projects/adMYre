@@ -1,15 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import WebFont from 'webfontloader'; 
 import {ImageBackground, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T, Button, ScrollView, TextInput,TouchableOpacity} from 'react-native';
-import HomePage from './Homepage';
 import Footer from './Footer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import auth, {firebase} from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore'
+
 
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
+const user = firebase.auth().currentUser;
+
+
+console.log(user);
+
 const Profile = ({navigation}) => {
+  const [user, setUser] = useState();
+  const [achieve, setAchieve] = useState();
+  const users = auth().currentUser;
+  const userID = users.uid;
+  const usersCollection = firestore().collection("Users").doc();
+  //const [name, setName] = useState(“Demarcus B”);
+  //const [achievement, setAchievement] = useState(“”);
+
+  function getUser() {
+    try {
+      const documentSnapshot = firestore().collection("users").doc(userID).get();
+      const userData = documentSnapshot.data();
+      setUser(userData);
+    } catch {
+      console.log("Cannot find user")
+    }
+  };
+  function getAchievements() {
+    firestore().collection("users").doc(userID).collection("achievements").get()
+      .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        var list = [];
+        list.push(doc.data());
+      });
+    })
+  }
   const [text,setText] = useState("\"You are amazing!\"");
   return (
     <View style = {{backgroundColor: "black",
@@ -20,7 +53,7 @@ const Profile = ({navigation}) => {
     >
     
       <View>
-      <Text style = {styles.text}> Demarcus 
+      <Text style = {styles.text}> Demarcuss
       <Text> </Text>
       <Text style = {styles.middleText}>Braclet</Text>
      

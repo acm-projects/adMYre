@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import WebFont from 'webfontloader';
 import {ImageBackground, Button, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T} from 'react-native';
-import HomePage from './Homepage';
+import HomePage from './HomePage';
 import Footer from './Footer';
 import { PromiseProvider } from 'mongoose';
 

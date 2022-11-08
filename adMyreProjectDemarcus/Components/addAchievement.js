@@ -14,10 +14,34 @@ import {
   Alert,
   Share,
 } from 'react-native';
+import auth, {firebase} from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const AddAchievement = () => {
+  const [title,setTitle] = useState('');
+  const [achievement,setAchievement] = useState('');
+  const [time,setTime] = useState('');
+
+  
+
+  function addAchievements() {
+    useAlert();
+    const user = firebase.auth().currentUser;
+    const userID = user.uid;
+    
+
+       firestore().collection('users').doc(userID).collection('achievements').add({
+         title:title,
+         achievement:achievement,
+         time:time,
+     
+        })
+  }
+
+
+
   const shareData = async() => {
     try {
         await Share.share({
@@ -50,9 +74,7 @@ Alert.alert(
   
 );
 }
-  const [text, setText] = useState('');
-  const [text2, setText2] = useState('');
-  const [text3, setText3] = useState('');
+  
   return (
     <View>
       <ImageBackground
@@ -64,25 +86,25 @@ Alert.alert(
         <TextInput
           style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, margin: 5, }}
           placeholder=""
-          onChangeText={(newText) => setText(newText)}
-          defaultValue={text}
+          onChangeText={(newText) => setTitle(newText)}
+          defaultValue={title}
         />
         <Text style={styles.subContent}> What was your achievement? </Text>
         <TextInput
           style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, margin: 5, }}
           placeholder=""
-          onChangeText={(newText) => setText2(newText)}
-          defaultValue={text2}
+          onChangeText={(newText) => setAchievement(newText)}
+          defaultValue={achievement}
         />
         <Text style={styles.subContent}> When was your achievement? </Text>
         <TextInput
           style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, margin: 5, }}
           placeholder=""
-          onChangeText={(newText) => setText3(newText)}
-          defaultValue={text3}
+          onChangeText={(newText) => setTime(newText)}
+          defaultValue={time}
         />
         <TouchableOpacity
-          onPress={() => useAlert()}
+          onPress={addAchievements}
           color="#FD8686"
           style={styles.button1}
         >

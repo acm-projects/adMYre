@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WebFont from 'webfontloader';
 import {ImageBackground, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T, TextInput, TouchableOpacity} from 'react-native';
-import HomePage from './Homepage';
+import HomePage from './HomePage';
 import Footer from './Footer';
 import { PromiseProvider } from 'mongoose';
 import { withOrientation } from 'react-navigation';
+import auth, {firebase} from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 
 const screenHeight = Dimensions.get('window').height;
@@ -13,8 +15,42 @@ const screenWidth = Dimensions.get('window').width;
 
 const LoginPage = ({navigation}) => {
     
-const [text, setText] = useState('');
-const [text2, setText2] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [initializing, setInitializing] = useState(true);
+const [user, setUser] = useState('');
+
+    // function onAuthStateChanged(user)
+    // {
+    //     setUser(user);
+    //     if (initializing) setInitializing(false);
+    // }
+
+    // useEffect (() => {
+    //     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    //     return subscriber;
+    // }, []);
+
+    // if (initializing) return null;
+
+    function signIntoUserAccount() {
+        auth()
+        
+            .signInWithEmailAndPassword(email, password)
+            .then(() => {
+                console.log('User signed in!');
+                const users = firebase.auth().currentUser;
+                console.log(users.uid);
+                navigation.navigate('Home');
+            })
+            .catch(error => {
+                if (error.code === 'auth/invalid-email') {
+                    console.log('That email address is invalid.');
+                }
+                console.error(error);
+            })
+    }
+
     return (
         <ImageBackground
          source={require("../Images/StartPage.jpg")}
@@ -26,16 +62,16 @@ const [text2, setText2] = useState('');
     <TextInput
         style={styles.inputText}
         placeholder="Username/Email"
-        onChangeText={newText => setText(newText)}
-        defaultValue={text}
+        onChangeText={newText => setEmail(newText)}
+        defaultValue={email}
     />
      <TextInput
         style={styles.inputText}
         placeholder="Password"
-        onChangeText={newText2 => setText2(newText2)}
-        defaultValue={text2}
+        onChangeText={newText2 => setPassword(newText2)}
+        defaultValue={password}
     />
-    <TouchableOpacity onPress={() => navigation.navigate('Home')}  style={styles.button}>
+    <TouchableOpacity onPress={signIntoUserAccount}  style={styles.button}>
     <Text style={styles.buttonText}>
         log in
          </Text>   
