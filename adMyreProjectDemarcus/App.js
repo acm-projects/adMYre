@@ -87,23 +87,25 @@ const LoginSignUp = ({navigation}) => {
     button: {
     
         backgroundColor: "white",
-        width: 365,
+        width: 330,
         alignItems: 'center',
         height: 80,
         paddingTop: 20,
         paddingBottom: 20,
         borderRadius: 35,
         borderWidth: 1,
+        marginLeft: 10
        
         
     },
 
     button2: {
         backgroundColor: "#FD8686",
-        width: 365,
+        width: 330,
         alignItems: 'center',
         height: 80,
         marginTop: 20,
+        marginLeft:  10,
         marginBottom: 40,
         paddingTop: 20,
         paddingBottom: 20,

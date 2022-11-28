@@ -20,24 +20,37 @@ import firestore from '@react-native-firebase/firestore';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const AddAchievement = () => {
+  var randomNumber = Math.floor(Math.random() * 1000000) + 1;
   const [title,setTitle] = useState('');
   const [achievement,setAchievement] = useState('');
   const [time,setTime] = useState('');
+  const [user, setUser] = useState();
+  const [achieve, setAchieve] = useState();
+  const users = auth().currentUser;
+  const userID = users.uid;
+  const userName = users.displayName;
+  const [name, setName] = useState(name);
 
-  
+
 
   function addAchievements() {
+    global.recentAchievement = achievement;
     useAlert();
     const user = firebase.auth().currentUser;
     const userID = user.uid;
+
+   
     
 
        firestore().collection('users').doc(userID).collection('achievements').add({
          title:title,
          achievement:achievement,
          time:time,
+         key:randomNumber,
      
         })
+
+        global.checkReload = 1;
   }
 
 
@@ -75,6 +88,7 @@ Alert.alert(
 );
 }
   
+console.log(global.mood);
   return (
     <View>
       <ImageBackground
@@ -84,21 +98,21 @@ Alert.alert(
         <Text style={styles.heading2}> Achievement </Text>
         <Text style={styles.subContent}> Title of your achievement </Text>
         <TextInput
-          style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, margin: 5, }}
+          style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20,  marginLeft: 15 }}
           placeholder=""
           onChangeText={(newText) => setTitle(newText)}
           defaultValue={title}
         />
         <Text style={styles.subContent}> What was your achievement? </Text>
         <TextInput
-          style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, margin: 5, }}
+          style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, marginLeft: 15  }}
           placeholder=""
           onChangeText={(newText) => setAchievement(newText)}
           defaultValue={achievement}
         />
         <Text style={styles.subContent}> When was your achievement? </Text>
         <TextInput
-          style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, margin: 5, }}
+          style={{ height: 90, backgroundColor: 'white', width: '90%', borderRadius: 20, marginLeft: 15  }}
           placeholder=""
           onChangeText={(newText) => setTime(newText)}
           defaultValue={time}
@@ -132,10 +146,11 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontFamily: 'JacquesFrancois-Regular',
     alignContent: 'center',
-    color: '#FD8686',
+    color: '#FD8282',
     alignSelf: 'center',
   },
   subContent: {
+    marginLeft: 10,
     marginTop: 20,
     fontFamily: 'JacquesFrancois-Regular',
     fontSize: 20,

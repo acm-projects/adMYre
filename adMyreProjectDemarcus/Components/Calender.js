@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import {Render, Button, StyleSheet, Text, View,} from 'react-native';
 import {Calendar, CalendarList, Agenda,} from 'react-native-calendars';
 import { NavigationContainer } from '@react-navigation/native';
@@ -6,14 +6,58 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MoodPicker from './MoodPicker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import moment from 'moment'
+import auth, {firebase} from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+
+
 
 
 var Dates = moment(new Date()).format("YYYY-MM-DD")
-console.log(Dates);
+
+
 const Diary = ({route}) => {
-  let markedDate = {};
-var Dates = moment(new Date()).format("YYYY-MM-DD")
+
+  console.log(global.mood);
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+
+  
+  const [user, setUser] = useState();
+  const [achieve, setAchieve] = useState();
+  const users = auth().currentUser;
+  const userID = users.uid;
+  const userName = users.displayName;
+  const [name, setName] = useState(name);
+  const [moods, setMood] =useState ([
+    {mood: "yellow"},
+   ]);
+  
+
+
+
+  firestore().collection("users").doc(userID).collection("mood").get()
+  .then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+   setMood = doc.data().mood
+
+   moods.push({
+    mood: doc.data().mood
+  })
+   
+  });
+})
+
+.catch(function(error) {
+  console.log(error);
+})
+
+
   return(
+
       <View>
       <Calendar
   // Callback which gets executed when visible months change in scroll view. Default = undefined
@@ -35,7 +79,7 @@ var Dates = moment(new Date()).format("YYYY-MM-DD")
   }}
   markingType={'period'}
   markedDates={{
-    '2022-10-01': {color:'blue', startingDay:'true', textColor:'black'},
+    [Dates]: {color:global.mood, textColor:'black'},
     '2022-10-02': {color:'blue', textColor:'black'},
     '2022-10-03': {color:'blue', endingDay: 'true', textColor:'black'},
     '2022-10-04': {color:'yellow', textColor:'black'},

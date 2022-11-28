@@ -34,14 +34,13 @@ const [user, setUser] = useState('');
     // if (initializing) return null;
 
     function signIntoUserAccount() {
+        navigation.navigate('Home')
         auth()
-        
             .signInWithEmailAndPassword(email, password)
             .then(() => {
                 console.log('User signed in!');
                 const users = firebase.auth().currentUser;
-                console.log(users.uid);
-                navigation.navigate('Home');
+                console.log(users.uid);;
             })
             .catch(error => {
                 if (error.code === 'auth/invalid-email') {
@@ -61,11 +60,13 @@ const [user, setUser] = useState('');
     </Text>
     <TextInput
         style={styles.inputText}
+        password={true}
         placeholder="Username/Email"
         onChangeText={newText => setEmail(newText)}
         defaultValue={email}
     />
      <TextInput
+      secureTextEntry={true}
         style={styles.inputText}
         placeholder="Password"
         onChangeText={newText2 => setPassword(newText2)}
@@ -80,7 +81,6 @@ const [user, setUser] = useState('');
     </ImageBackground>
     );
 };
-
 const styles = StyleSheet.create({
     button: {
     
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontFamily: 'JacquesFrancois-Regular',
         paddingBottom: 120,
-        marginTop: 80,  
+        marginTop: 50,  
        
       },
 

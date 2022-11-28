@@ -1,109 +1,181 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import WebFont from 'webfontloader'; 
-import {ImageBackground, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T, Button, ScrollView, TextInput,TouchableOpacity} from 'react-native';
+import {ImageBackground, RefreshControl, View, Text, StyleSheet, ShadowPropTypesIOS, Dimensions, T, Button, ScrollView, TextInput,TouchableOpacity} from 'react-native';
 import Footer from './Footer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import auth, {firebase} from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore'
-
-
+import firestore from '@react-native-firebase/firestore';
+import db from '@react-native-firebase/firestore';
+import collection from '@react-native-firebase/firestore';
+import snapSho from '@react-native-firebase/firestore';
+import { forNoAnimation } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators';
+import Panel from './Panel';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
+var randomNumber = Math.floor(Math.random() * 1000000) + 1;
+var randomNumber2 = Math.floor(Math.random() * 1000000) + 1;
+var randomNumber3 = Math.floor(Math.random() * 1000000) + 1;
+var pickIcon = Math.floor(Math.random() * 4) + 1 
 
-const user = firebase.auth().currentUser;
 
 
-console.log(user);
+var newIcon = [
+      "heart",
+      "happy-sharp",
+      "trophy",
+     "ios-heart",
+     "md-nutrition",
+]
+
+var Icon = newIcon[pickIcon];
+
+
+
+console.log(newIcon[1]);
 
 const Profile = ({navigation}) => {
+
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    console.log("wooooo");
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+
+
+
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+  function handleClick() {
+    forceUpdate();
+  }
+
   const [user, setUser] = useState();
   const [achieve, setAchieve] = useState();
   const users = auth().currentUser;
   const userID = users.uid;
-  const usersCollection = firestore().collection("Users").doc();
+  const userName = users.displayName;
+  const [name, setName] = useState(name);
+
+
+
+ const [peoples, setPeople] =useState ([
+  {achievement: 'Finished Homework Early!', icon: newIcon[1],  id: userName,  key: "2"},
+
+ ]);
+
+
   //const [name, setName] = useState(“Demarcus B”);
   //const [achievement, setAchievement] = useState(“”);
 
-  function getUser() {
-    try {
-      const documentSnapshot = firestore().collection("users").doc(userID).get();
-      const userData = documentSnapshot.data();
-      setUser(userData);
-    } catch {
-      console.log("Cannot find user")
-    }
-  };
-  function getAchievements() {
-    firestore().collection("users").doc(userID).collection("achievements").get()
-      .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        var list = [];
-        list.push(doc.data());
-      });
-    })
-  }
-  const [text,setText] = useState("\"You are amazing!\"");
-  return (
+
+  firestore().collection('users').get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+      if (users.email == doc.data().email) {
+        setName(doc.data().name);
+      }
+    })  
+
+
+  })
+
+ 
+
+
+
+
+
+
+  firestore().collection("users").doc(userID).collection("achievements").get()
+  .then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+   
+    var document = doc.data().title;
+    console.log(doc.data().title);
+   
+   if (global.checkReload == 1) {
+    peoples.push({
+      title: doc.data().title,
+      achievement: doc.data().achievement,
+      id: doc.data().title,
+      key: randomNumber3,
+    },
+
+    );
+    global.checkReload = 0;
+   }
+    
+   
+  });
+})
+   
+
+  
+  return (  
+
+    
     <View style = {{backgroundColor: "black",
     height: screenHeight,
     width: screenWidth,
   flex:1,
     }}
-    >
     
-      <View>
-      <Text style = {styles.text}> Demarcuss
-      <Text> </Text>
-      <Text style = {styles.middleText}>Braclet</Text>
+    >
+  <Text style = {styles.text}> {userName}
+
      
       </Text>
-      
-
       <Text style = {styles.informativeText}>All of your accomplishments are listed here.</Text>
    
-      </View>
+     
       <View 
       style={styles.img}
       >
-     
-     <Text  onPress={() => navigation.navigate('addAchievement')} style = {styles.affirmation}> Click here to add an achievement! </Text>
+      <Text  onPress={() => navigation.navigate('addAchievement')} style = {styles.affirmation}> Click here to add an achievement! </Text>
    
-      <Text style={styles.dailyaffirmation}>
-      Look at all you have accomplished!
-      
-      </Text>
-      <Text>
-      </Text>
-      <ScrollView style={{flex:1}}>
-      
-      <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> Worked out {'\n'} 
-      
-   <Text>       Got them GAINES </Text>
+   <Text style={styles.dailyaffirmation}>
+   Look at all you have accomplished!
+   
+   </Text>
 
-       </Text>
-       
-      <Text style = {styles.recentaffirmation}> <Ionicons  color="blue" name="sad-outline" size={30}/> CS EXAM  
-      <Text> {'\n'} </Text>
-      <Text style={{borderWidth: 100,}}>      Got A 50</Text>
-      <Text> {'\n'} </Text>
-      <Text style={{borderWidth: 100,}}>      12 December 2022 </Text>
-       </Text>
-      <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> ATE BREAKFAST 
-      <Text> {'\n'} </Text>
-      <Text style={{borderWidth: 100,}}>      WITH MILK</Text>
-      </Text>
-      <Text style = {styles.recentaffirmation}> <Ionicons color="green"  name="happy-outline" size={30}/> Touched Grass! </Text>
-      <Text style = {styles.recentaffirmation}> <Ionicons color="green"  name="happy-outline" size={30}/> ATE FOOOOOOD! </Text>
-      <Text style = {styles.recentaffirmation}><Ionicons color="green"  name="happy-outline" size={30}/>  HUNG OUT WITH A FRIEND! </Text>
-      <Text style = {styles.recentaffirmation}> <Ionicons color="green"  name="happy-outline" size={30}/> Hung out with your familiy </Text>
-      <Text style = {styles.recentaffirmation}> <Ionicons color="green"  name="happy-outline" size={30}/> Finished Homework! </Text>
-      
-</ScrollView>
-</View>
-      </View>
-   
+   <ScrollView
+           refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
+   >
+      <Panel  title="Add achievements!" icon="heart">
+          <Text> Went Walking!</Text>
+  </Panel>
+   {peoples
+   .map((peoples)=> {
+    return (
+
+    <Panel key={peoples.key} title={peoples.id} icon={Icon}>
+          <Text key={200}>{peoples.achievement}</Text>
+  </Panel>
+    )
+   })}
+
+
+
+
+
+
+   </ScrollView>
+   </View>
+   </View>
   )
+
+  
   }
 
   const styles = StyleSheet.create({ 
@@ -116,12 +188,16 @@ const Profile = ({navigation}) => {
       borderColor: 'white',
       borderRadius: 15,
       textAlign: "center",
-      backgroundColor: "cyan",
+      backgroundColor: "#FFFFFF",
       textAlign: 'center',
       width: 300,
       height: 50,
       marginTop: 20,
-      marginLeft: 35,
+      marginLeft: 20,
+    },
+
+    borderStyle: {
+      borderWidth: 100,
     },
 
     informativeText: {
@@ -143,7 +219,7 @@ const Profile = ({navigation}) => {
       backgroundColor: "white",
       marginTop: 20, 
       width: 350,
-      marginLeft: 15,
+      marginLeft: 10,
     },
 
     dailyaffirmation: {

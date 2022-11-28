@@ -1,24 +1,106 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import WebFont from 'webfontloader';
-import {View, Text, StyleSheet, Image, ImageBackground, Dimensions, TextInput, ScrollView, Button, TouchableOpacity} from 'react-native';
+import {View, RefreshControl, Text, StyleSheet, Image, ImageBackground, Dimensions, TextInput, ScrollView, Button, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GenerateAchievement from './GenerateAffirmation';
+import auth, {firebase} from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import { Easing, Notifier, NotifierRoot, NotifierComponents } from 'react-native-notifier';
+import collection from '@react-native-firebase/firestore';
+import { forNoAnimation } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators';
+
+var randomNumber = Math.floor(Math.random() * 1000000) + 1;
+var randomNumber2 = Math.floor(Math.random() * 1000000) + 1;
+
+
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 
+
 const HomePage = (navigation) => {
+  const [peoples, setPeople] =useState ([
+    {achievement: 'Aced my math exam!', id: 'John', key: "1"},
+   ]);
   
-  const [text,setText] = useState("\"You are amazing!\"");
+  
+
+  //NOTIFICATIONSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS----------------------
+  const notifierRef = React.useRef(0);
+  setTimeout(() => {
+  Notifier.showNotification({
+    hideOnPress: true,
+  title: 'adMYre',
+  description: global.recentAchievement,
+  duration: 0,
+  showAnimationDuration: 800,
+  showEasing: Easing.bounce,
+  onHidden: () => console.log('Hidden'),
+  onPress: () => console.log('Press'),
+ 
+          })
+    }, 50000);
+
+    //86400000
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+ 
+  const onRefresh = React.useCallback(() => {
+    console.log("wooooo");
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+  
+  const [user, setUser] = useState();
+  const [achieve, setAchieve] = useState();
+  const users = auth().currentUser;
+  const userID = users.uid;
+  const userName = users.displayName;
+  const [name, setName] = useState(name);
+
+ 
+  firestore().collection("users").doc(userID).collection("achievements").get()
+  .then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+   
+  
+    global.recentAchievement = doc.data().achievement;
+    console.log(doc.data().achievement);
+   
+if (global.checkReload == 0) {
+    peoples.push({
+      title: doc.data().title,
+      achievement: doc.data().achievement,
+      id: doc.data().title,
+      key: randomNumber,
+    },
+
+    );
+
+    global.checkReload = 10;
+}
+    
+   
+  });
+})
+   
+  
     return (
+      
       <View style = {{backgroundColor: "black",
       height: screenHeight,
       width: screenWidth,
     flex:1,
       }}
       >
-      
+       <NotifierRoot ref={notifierRef} />
         <View>
         <Text style = {styles.text}> Ho
         <Text style = {styles.middleText}>me</Text>
@@ -45,16 +127,24 @@ const HomePage = (navigation) => {
         </Text>
         <Text>
         </Text>
-        <ScrollView style={{flex:1}}>
-        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> Woke up early!! 
+        <ScrollView
+         style={{flex:1}}
+         refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />}
+         >
+        {peoples.map((peoples)=> {
+    return (
+
+          <Text key={peoples.key} style= {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={20}/> {peoples.achievement}</Text>
+    )
+   })}
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={20}/> Woke up early!! 
          </Text>
-        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> GOT A 50 IN CS  </Text>
-        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/>ATE BREAKFAST </Text>
-        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> Touched Grass!</Text>
-        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/>ATE FOOOOOOD!</Text>
-        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> HUNG OUT WITH A FRIEND! </Text>
-        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> Hung out with your familiy </Text>
-        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={30}/> LISTEND TO I LIKE YOU I DO </Text>
+        <Text style = {styles.recentaffirmation}> <Ionicons color="green" name="happy-outline" size={20}/>ATE BREAKFAST </Text>
+        
         
 </ScrollView>
 </View>
@@ -63,7 +153,7 @@ const HomePage = (navigation) => {
     )
     }
 
-    const styles = StyleSheet.create({ 
+     const styles = StyleSheet.create({ 
       affirmation: {
         paddingTop:13,
         fontSize: 15,
@@ -158,5 +248,4 @@ const HomePage = (navigation) => {
 
       
       });
-     
 export default HomePage;

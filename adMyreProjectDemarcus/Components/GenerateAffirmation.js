@@ -38,7 +38,7 @@ export default class App extends React.Component{
          return(
             <View style = {styles.container}>
                 {affirmationsVal}
-                <Button title="new affirmation" onPress={() => this.componentDidMount()}/>
+                <Button color="#FD8686" title="new affirmation" onPress={() => this.componentDidMount()}/>
                 <View>
                
                 </View>
